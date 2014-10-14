@@ -6,8 +6,8 @@ import task_01
 import data
 def get_average(nums):
     """Generates average of a list"""
-    total = 0.00000000000000000000
-    count = 0.00000000000000000000
+    total = 0.0
+    count = 0
     for i in nums:
         total += i
         count += 1
