@@ -17,6 +17,7 @@ def test_passwords(listobj):
 
     return cracked
 
+
 def crack_it(pwdhash):
     """Cracking"""
     retval = False
@@ -30,9 +31,9 @@ def crack_it(pwdhash):
 
 def report(listtup):
     """Generates report of bad passwords"""
-    report = 'Cracked passwords\n' + ('-' * 50) + '\n'
+    rept = 'Cracked passwords\n' + ('-' * 50) + '\n'
     userline = '{0} {1}\n'
     for user in listtup:
-        report += userline.format(user[0], user[1])
+        rept += userline.format(user[0], user[1])
 
-    return report
+    return rept

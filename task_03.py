@@ -7,7 +7,7 @@ def bubble_sort(nums):
     """Bubble sorts"""
     srtd = False
     while not srtd:
-        sorted = True
+        srtd = True
         for i in range(0, len(nums) - 1):
             if nums[i] > nums[i + 1]:
                 srtd = False
