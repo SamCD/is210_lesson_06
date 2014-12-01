@@ -4,6 +4,8 @@
 
 import task_01
 import data
+
+
 def get_average(nums):
     """Generates average of a list"""
     total = 0.0
@@ -19,5 +21,4 @@ ODD_AVG = get_average(task_01.evens_and_odds(data.TASK_O1, show_even=False))
 
 print "Task 02 Report\n------------------------\n\
 Total AVG: {0}\nEven AVG: {1}\n\
-Odd AVG: {2}".format(TOTAL_AVG, 
-                     EVEN_AVG, ODD_AVG)
+Odd AVG: {2}".format(TOTAL_AVG, EVEN_AVG, ODD_AVG)

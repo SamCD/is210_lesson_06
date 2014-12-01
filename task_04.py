@@ -4,33 +4,35 @@
 
 import data
 SALT = 'monosodium-glutamate'
-def test_passwords(users):
 
-    """
-    Weeds out bad passwords"""
 
-    cracked_pws = []
-    for i in users:
-        pws = [users[i].split(':')[0], users[i].split(':')[4]]
-        cracked = crack_it(pws)
-        if cracked:
-            cracked_pws.append(users[i].split(':')[0], users[i].split(':')[4])
-            users = cracked_pws
-        return users
+def test_passwords(listobj):
+    """Weeds out bad passwords"""
+    cracked = []
+    for account in listobj:
+        aparts = account.split(':')
+        passwd = crack_it(aparts[1])
+        if passwd:
+            cracked.append((aparts[0], passwd))
 
-def crack_it(pws):
+    return cracked
 
-    """
-    Tests passwords against a words database"""
-    
-    words = test_passwords(pws)
-    users = ''
-    for i in data.WORDS:
-        bad = data.crypt(data.WORDS[i], SALT)
-        if bad[1] in words:
-            users = bad
-        return users
+def crack_it(pwdhash):
+    """Cracking"""
+    retval = False
+    for word in data.WORDS:
+        crypted = data.crypt(word, SALT)
+        if pwdhash == crypted:
+            retval = word
+            break
+    return retval
 
-def report(users):
+
+def report(listtup):
     """Generates report of bad passwords"""
-    print "Cracked passwords\n--------\n{0}".format(test_passwords(users))
+    report = 'Cracked passwords\n' + ('-' * 50) + '\n'
+    userline = '{0} {1}\n'
+    for user in listtup:
+        report += userline.format(user[0], user[1])
+
+    return report
